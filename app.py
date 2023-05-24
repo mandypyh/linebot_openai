@@ -45,7 +45,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    ai_msg = msg[:3].lower()
+    ai_msg = msg[:3]
     reply_msg = ''
     if ai_msg == 'ai:':
         # 將第4個字元之後的訊息發送給 OpenAI
@@ -63,6 +63,7 @@ def handle_message(event):
 
     else:
         reply_msg = msg
+
     text_message = TextSendMessage(text=reply_msg)
     line_bot_api.reply_message(event.reply_token,text_message)
         
