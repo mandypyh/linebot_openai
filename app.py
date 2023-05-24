@@ -59,7 +59,7 @@ def handle_message(event):
     reply_msg = ''
     if ai_msg == 'ai:':
         GPT_answer = GPT_response(msg[3:])
-        reply_msg = GPT_answer["choices"][0]["text"].replace('\n','')
+        reply_msg = GPT_answer
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
           reply_msg = None
