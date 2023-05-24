@@ -61,13 +61,13 @@ def handle_message(event):
 
     if msg.startswith('ai:'):
         GPT_answer = GPT_response(msg)
-        print(GPT_answer)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+        print(remove_first_two_lines(GPT_answer))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
-        print(remove_first_two_lines(reply_msg))
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(reply_msg)))
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     else:
         reply_msg = msg
