@@ -40,39 +40,34 @@ def callback():
         abort(400)
     return 'OK'
 
+def GPT_response(text):
+    # 接收回應
+    response = openai.Completion.create(model="text-davinci-003", prompt=text, temperature=0.5, max_tokens=500)
+    print(response)
+    # 重組回應
+    answer = response['choices'][0]['text'].replace('。','')
+    return answer
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    ai_msg = msg[:3]
+    ai_msg = msg[:3].lower
     reply_msg = ''
     if ai_msg == 'ai:':
-        # 將第4個字元之後的訊息發送給 OpenAI
-        response = openai.Completion.create(
-            model='text-davinci-003',
-            prompt=msg[3:],
-            max_tokens=500,
-            temperature=0.5,
-            )
-        # 接收到回覆訊息後，移除換行符號
-        reply_msg = response["choices"][0]["text"].replace('\n','')
+        GPT_answer = GPT_response(ai_msg)
+        print(GPT_answer)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     else:
-        response = openai.Completion.create(
-            model='text-davinci-003',
-            prompt=msg[3:],
-            max_tokens=500,
-            temperature=0.5,
-            )
-        # 接收到回覆訊息後，移除換行符號
-        reply_msg = response["choices"][0]["text"].replace('\n','')
-
-    text_message = TextSendMessage(text=reply_msg)
-    line_bot_api.reply_message(event.reply_token,text_message)
+        reply_msg = msg
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
         
 
 @handler.add(PostbackEvent)
