@@ -52,7 +52,7 @@ def handle_message(event):
         response = openai.Completion.create(
             model='text-davinci-003',
             prompt=msg[3:],
-            max_tokens=256,
+            max_tokens=500,
             temperature=0.5,
             )
         # 接收到回覆訊息後，移除換行符號
@@ -62,7 +62,14 @@ def handle_message(event):
         reply_msg = None
 
     else:
-        reply_msg = msg
+        response = openai.Completion.create(
+            model='text-davinci-003',
+            prompt=msg[3:],
+            max_tokens=500,
+            temperature=0.5,
+            )
+        # 接收到回覆訊息後，移除換行符號
+        reply_msg = response["choices"][0]["text"].replace('\n','')
 
     text_message = TextSendMessage(text=reply_msg)
     line_bot_api.reply_message(event.reply_token,text_message)
