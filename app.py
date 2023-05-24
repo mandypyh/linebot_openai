@@ -58,7 +58,32 @@ def handle_message(event):
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
     
-    if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
+    if msg == "功能說明":
+        line_bot_api.reply_message(  
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='功能',
+                                text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。 如果你需要ChatGPT的回覆與建議，請在訊息前面加＂ai:＂! 以下為我們的服務: 本官方帳號',
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='分群結果',
+                                        text='分群結果'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='地圖標記',
+                                        text='地圖標記'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='文字雲',
+                                        text='文字雲'
+                                    )
+                                ]
+                            )
+                        )
+                    )
+    if msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
