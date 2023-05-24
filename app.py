@@ -52,9 +52,8 @@ def GPT_response(text):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    ai_msg = msg[:3].lower
 
-    if ai_msg == 'ai:':
+    if msg.startswith('ai:'):
         GPT_answer = GPT_response(msg[3:])
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
