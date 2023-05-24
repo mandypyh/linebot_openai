@@ -54,7 +54,7 @@ def handle_message(event):
     msg = event.message.text
 
     if msg.startswith('ai:'):
-        msgall = "你是一個日本旅遊資訊整合平台的對話機器人，服務對象為想去日本旅遊的台灣旅客。如果我的問題和日本旅遊不相關，請回答我<您的問題和日本旅遊無關，不在我們的服務範圍內>。" + msg
+        msgall = "你是一個日本旅遊資訊整合平台的對話機器人，服務對象為想去日本旅遊的台灣旅客。如果我的問題和日本旅遊不相關，請回答我您的問題和日本旅遊無關，不在我們的服務範圍內。" + msg[3:]
         GPT_answer = GPT_response(msgall)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
