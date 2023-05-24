@@ -55,9 +55,20 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    GPT_answer = GPT_response(msg)
-    print(GPT_answer)
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
+    ai_msg = msg[:3].lower()
+    reply_msg = ''
+    if ai_msg == 'ai:':
+        GPT_answer = GPT_response(msg[3:])
+        reply_msg = GPT_answer["choices"][0]["text"].replace('\n','')
+    
+    if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
+          reply_msg = None
+
+    else:
+        reply_msg = msg
+        text_message = TextSendMessage(text=reply_msg)
+        line_bot_api.reply_message(event.reply_token,text_message)
+        
 
 @handler.add(PostbackEvent)
 def handle_message(event):
