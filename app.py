@@ -64,12 +64,12 @@ def handle_message(event):
                         TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                title='功能',
-                                text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。 如果你需要ChatGPT的回覆與建議，請在訊息前面加＂ai:＂! 以下為我們的服務: 本官方帳號',
+                                title='功能說明',
+                                text='請選擇功能',
                                 actions=[
                                     PostbackTemplateAction(
                                         label='分群結果',
-                                        text='分群結果'
+                                        text='分群結果',
                                     ),
                                     PostbackTemplateAction(
                                         label='地圖標記',
