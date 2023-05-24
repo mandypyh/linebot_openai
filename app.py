@@ -7,7 +7,6 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-import numpy
 
 #======python的函數庫==========
 import tempfile, os
