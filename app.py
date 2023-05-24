@@ -41,8 +41,10 @@ def callback():
     return 'OK'
 
 def GPT_response(text):
+    textall = "你是一個日本旅遊資訊整合平台的對話機器人，服務對象為想去日本旅遊的台灣旅客。如果我的問題和日本旅遊不相關，請回答我<您的問題和日本旅遊無關，不在我們的服務範圍內>。"
+
     # 接收回應
-    response = openai.Completion.create(model="text-davinci-003", prompt=text, temperature=0.5, max_tokens=500)
+    response = openai.Completion.create(model="text-davinci-003", prompt=textall, temperature=0.5, max_tokens=500)
     print(response)
     # 重組回應
     answer = response['choices'][0]['text']
