@@ -59,19 +59,15 @@ def handle_message(event):
     reply_msg = ''
     if ai_msg == 'ai:':
         GPT_answer = GPT_response(msg[3:])
-        reply_msg = GPT_answer
-        text_message = TextSendMessage(text=reply_msg)
-        line_bot_api.reply_message(event.reply_token,text_message)
+        reply_msg = GPT_answer 
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
-        text_message = TextSendMessage(text=reply_msg)
-        line_bot_api.reply_message(event.reply_token,text_message)
 
     else:
         reply_msg = msg
-        text_message = TextSendMessage(text=reply_msg)
-        line_bot_api.reply_message(event.reply_token,text_message)
+    text_message = TextSendMessage(text=reply_msg)
+    line_bot_api.reply_message(event.reply_token,text_message)
         
 
 @handler.add(PostbackEvent)
