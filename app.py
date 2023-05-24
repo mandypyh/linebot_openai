@@ -48,21 +48,26 @@ def GPT_response(text):
     answer = response['choices'][0]['text']
     return answer
 
+def remove_first_two_lines(text):
+    lines = text.split('\n')
+    if len(lines) >= 2:
+        lines = lines[2:]
+    return '\n'.join(lines)
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
 
     if msg.startswith('ai:'):
-        msgall = "你是一個日本旅遊資訊整合平台的對話機器人，服務對象為想去日本旅遊的台灣旅客。如果我的問題和日本旅遊不相關，請回答我您的問題和日本旅遊無關，不在我們的服務範圍內。" + msg[3:]
-        GPT_answer = GPT_response(msgall)
+        GPT_answer = GPT_response(msg)
         print(GPT_answer)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
-        print(reply_msg)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+        print(remove_first_two_lines(reply_msg))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(reply_msg)))
 
     else:
         reply_msg = msg
