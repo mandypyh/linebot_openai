@@ -28,7 +28,6 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 def GPT_response(text):
     # 接收回應
     response = openai.Completion.create(model="text-davinci-003", prompt=text, temperature=0.5, max_tokens=500)
-    print(response)
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
@@ -57,8 +56,7 @@ def handle_message(event):
     ai_msg = msg[:3].lower()
     reply_msg = ''
     if ai_msg == 'ai:':
-        GPT_answer = GPT_response(msg[3:])
-        reply_msg = GPT_answer 
+        reply_msg = GPT_response(msg[3:])
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
