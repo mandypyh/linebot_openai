@@ -25,14 +25,6 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
-def GPT_response(text):
-    # 接收回應
-    response = openai.Completion.create(model="text-davinci-003", prompt=text, temperature=0.5, max_tokens=500)
-    # 重組回應
-    answer = response['choices'][0]['text'].replace('。','')
-    return answer
-
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -56,7 +48,15 @@ def handle_message(event):
     ai_msg = msg[:3].lower()
     reply_msg = ''
     if ai_msg == 'ai:':
-        reply_msg = GPT_response(msg[3:])
+        # 將第4個字元之後的訊息發送給 OpenAI
+        response = openai.Completion.create(
+            model='text-davinci-003',
+            prompt=msg[3:],
+            max_tokens=256,
+            temperature=0.5,
+            )
+        # 接收到回覆訊息後，移除換行符號
+        reply_msg = response["choices"][0]["text"].replace('\n','')
     
     if msg == "功能說明" or msg == "分群結果" or msg == "地圖標記" or msg == "文字雲":
         reply_msg = None
