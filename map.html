@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e8ad3fdd502ae7fee51ff849c69462e5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e8ad3fdd502ae7fee51ff849c69462e5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e8ad3fdd502ae7fee51ff849c69462e5 = L.map(
+                "map_e8ad3fdd502ae7fee51ff849c69462e5",
+                {
+                    center: [35.6895, 139.6917],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_75f79e83b942f820f3d9dd321d01bc06 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            var marker_aa1bc0350578f828d9f367ff35dc7ae0 = L.marker(
+                [35.6812665, 139.757653],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_aa1bc0350578f828d9f367ff35dc7ae0.bindTooltip(
+                `<div>
+                     東京
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b00fad5691cf859a9edc98b34a04f86 = L.marker(
+                [35.1706972, 136.8816286],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_8b00fad5691cf859a9edc98b34a04f86.bindTooltip(
+                `<div>
+                     名古屋
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c10a09407f821b154e814d32f2ba6d7e = L.marker(
+                [34.7021912, 135.4955866],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_c10a09407f821b154e814d32f2ba6d7e.bindTooltip(
+                `<div>
+                     大阪
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b147068bc3f122e00b0ea5cf03bc5cf1 = L.marker(
+                [34.9861909, 135.7600629],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_b147068bc3f122e00b0ea5cf03bc5cf1.bindTooltip(
+                `<div>
+                     京都
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_412f859ee3f71925aaaff862d87e94fb = L.marker(
+                [35.3883394, 136.9392801],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_412f859ee3f71925aaaff862d87e94fb.bindTooltip(
+                `<div>
+                     犬山城
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7bbda81c14f16d2400b866dede3592bc = L.marker(
+                [35.3802772, 136.9457636],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_7bbda81c14f16d2400b866dede3592bc.bindTooltip(
+                `<div>
+                     犬山
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5cff39fd74ccbe7b47e8143c8d86b504 = L.marker(
+                [35.1816051, 136.9054953],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_5cff39fd74ccbe7b47e8143c8d86b504.bindTooltip(
+                `<div>
+                     名古屋城
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7c892f4d35b084fa6a3c42cb182d99ac = L.marker(
+                [35.6922273, 139.7006009],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_7c892f4d35b084fa6a3c42cb182d99ac.bindTooltip(
+                `<div>
+                     新宿
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_41972f97106cf2d1d2ea19fb039d1466 = L.marker(
+                [34.6807963, 135.8189494],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_41972f97106cf2d1d2ea19fb039d1466.bindTooltip(
+                `<div>
+                     奈良
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_785835609a00d0085f4d6b3208ec868d = L.marker(
+                [16.8335788, 112.3406807],
+                {}
+            ).addTo(map_e8ad3fdd502ae7fee51ff849c69462e5);
+        
+    
+            marker_785835609a00d0085f4d6b3208ec868d.bindTooltip(
+                `<div>
+                     關西機場
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
