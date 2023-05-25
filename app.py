@@ -70,23 +70,27 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "分群結果":
-        button_template_message = ButtonsTemplate(
-                                title='分群結果', 
-                                text='Please select',
-                                actions=[
-                                    PostbackTemplateAction(
-                                        label='SVD', 
-                                        text='SVD'
-                                    ),
-                                    PostbackTemplateAction(
-                                        label='t-SNE', 
-                                        text ='t-SNE'
-                                    )
-                                ]
-                            )
-                            
-        line_bot_api.reply_message(event.reply_token,
-                                   TemplateSendMessage(alt_text="Template Example", template=button_template_message))
+        buttons_template_message = TemplateSendMessage(
+            alt_text = "分群結果",
+            template=CarouselTemplate( 
+            columns=[ 
+                    CarouselColumn( 
+                        title = "分群結果", 
+                        text ="請點選想查詢的分群結果", 
+                        actions =[
+                            MessageAction( 
+                                label= "SVD",
+                                text= "SVD",)
+                            MessageAction( 
+                                label= "t-SNE",
+                                text= "t-SNE")
+                        ]
+                    )
+                ]
+            )
+         )
+        line_bot_api.reply_message(event.reply_token, buttons_template_message)
+        
     else:
         reply_msg = msg
         print(reply_msg)
