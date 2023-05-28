@@ -71,7 +71,7 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='功能說明',
-                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。如果你需要ChatGPT的回覆與建議，請在訊息前面加＂ai:＂~ 我們有以下功能:',
+                        text='請選擇想用的功能',
                         actions=[
                             MessageTemplateAction(
                                 label='文字雲',
@@ -81,12 +81,16 @@ def handle_message(event):
                                 label='分群結果',
                                 text='分群結果',
                             ),
+                            MessageTemplateAction(
+                                label='地圖標記',
+                                text='地圖標記',
+                            ),
                         ]
                     )
                 )
             )
         print("type of msg: {}".format(type(msg)))
-        line_bot_api.reply_message(event.reply_token, message) 
+        line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "地圖標記":
         reply_msg = None
