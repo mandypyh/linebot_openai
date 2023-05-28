@@ -82,8 +82,8 @@ def handle_message(event):
                                 text='分群結果',
                             ),
                             MessageTemplateAction(
-                                label='地圖標記',
-                                text='地圖標記',
+                                label='推薦文章',
+                                text='推薦文章',
                             ),
                             MessageTemplateAction(
                                 label='ChatGPT回覆',
@@ -96,7 +96,7 @@ def handle_message(event):
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)
 
-    elif msg == "地圖標記":
+    elif msg == "推薦文章":
         reply_msg = None
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
