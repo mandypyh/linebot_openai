@@ -64,7 +64,7 @@ def handle_message(event):
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
     
-    elif msg == "功能說明" or msg == "地圖標記" or msg == "分群結果":
+    elif msg == "功能說明" or msg == "地圖標記":
         reply_msg = None
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
@@ -92,6 +92,30 @@ def handle_message(event):
             )
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)     
+
+    elif msg == "分群結果":
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='分群結果',
+                        text='請選擇想看的分群結果',
+                        actions=[
+                            MessageTemplateAction(
+                                label='SVD',
+                                text='SVD',
+                            ),
+                            MessageTemplateAction(
+                                label='t-SNE',
+                                text='t-SNE',
+                            ),
+                        ]
+                    )
+                )
+            )
+        print("type of msg: {}".format(type(msg)))
+        line_bot_api.reply_message(event.reply_token, message)
 
     else:
         reply_msg = msg
