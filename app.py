@@ -64,7 +64,35 @@ def handle_message(event):
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
     
-    elif msg == "功能說明" or msg == "地圖標記":
+    elif msg == "功能說明":
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='功能說明',
+                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。如果你需要ChatGPT的回覆與建議，請在訊息前面加＂ai:＂~ 我們有以下功能:',
+                        actions=[
+                            MessageTemplateAction(
+                                label='文字雲',
+                                text='文字雲',
+                            ),
+                            MessageTemplateAction(
+                                label='分群結果',
+                                text='分群結果',
+                            ),
+                            MessageTemplateAction(
+                                label='地圖標記',
+                                text='地圖標記',
+                            ),
+                        ]
+                    )
+                )
+            )
+        print("type of msg: {}".format(type(msg)))
+        line_bot_api.reply_message(event.reply_token, message) 
+
+    elif msg == "地圖標記":
         reply_msg = None
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
