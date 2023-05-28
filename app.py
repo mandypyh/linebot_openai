@@ -68,7 +68,31 @@ def handle_message(event):
         reply_msg = None
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
-                                   
+
+    elif msg == "文字雲":
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='文字雲',
+                        text='請選擇想看的文字雲',
+                        actions=[
+                            MessageTemplateAction(
+                                label='標題',
+                                text='標題',
+                            ),
+                            MessageTemplateAction(
+                                label='內文',
+                                text='內文',
+                            ),
+                        ]
+                    )
+                )
+            )
+        print(message)
+        line_bot_api.reply_message(event.reply_token, message)     
+
     else:
         reply_msg = msg
         print(reply_msg)
