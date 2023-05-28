@@ -108,15 +108,15 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='文字雲',
-                        text='請選擇想看的文字雲',
+                        text='分析近期日本旅遊文章的常見詞彙，分別根據標題與內文文字，掌握近期日本旅遊的流行重點！',
                         actions=[
                             MessageTemplateAction(
-                                label='標題',
-                                text='標題',
+                                label='標題結果',
+                                text='標題結果',
                             ),
                             MessageTemplateAction(
-                                label='內文',
-                                text='內文',
+                                label='內文結果',
+                                text='內文結果',
                             ),
                         ]
                     )
@@ -132,15 +132,15 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='分群結果',
-                        text='請選擇想看的分群結果',
+                        text='分析近期日本旅遊文章的常見詞彙，依據不同分群方式，分類文章類型！',
                         actions=[
                             MessageTemplateAction(
-                                label='SVD',
-                                text='SVD',
+                                label='SVD結果',
+                                text='SVD結果',
                             ),
                             MessageTemplateAction(
-                                label='t-SNE',
-                                text='t-SNE',
+                                label='t-SNE結果',
+                                text='t-SNE結果',
                             ),
                         ]
                     )
