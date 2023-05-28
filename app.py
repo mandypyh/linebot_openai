@@ -81,10 +81,6 @@ def handle_message(event):
                                 label='分群結果',
                                 text='分群結果',
                             ),
-                            MessageTemplateAction(
-                                label='地圖標記',
-                                text='地圖標記',
-                            ),
                         ]
                     )
                 )
