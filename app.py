@@ -97,7 +97,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "推薦文章":
-        reply_msg = None
+        reply_msg = "這個功能還沒建立"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
