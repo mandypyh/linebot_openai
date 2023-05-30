@@ -101,8 +101,8 @@ def handle_message(event):
                 TemplateSendMessage(
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
-                        title='推薦文章',
-                        text='抓取最新日本旅遊網站文章，掌握近期討論熱點！搜尋特定關鍵字，及時給予經情緒分析後的推薦文章!',
+                        title='最新文章',
+                        text='抓取最新日本旅遊網站文章，掌握近期討論熱點！',
                         actions=[
                             MessageTemplateAction(
                                 label='Dcard',
@@ -144,7 +144,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "推薦文章":
-        reply_msg = "搜尋特定關鍵字，提供經情緒分析後的最新推薦文章!"
+        reply_msg = "搜尋特定關鍵字，提供經情緒分析後的最新推薦文章! \n這個功能還沒建立，先點別的~"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
