@@ -70,8 +70,8 @@ def handle_message(event):
             geolocator = Nominatim(user_agent="my_app")
             location = geolocator.geocode(location)
             location_message = LocationSendMessage(title=location,
-                                                  latitude=location.latitude,
-                                                  longitude=location.longitude)
+                                                   latitude=location.latitude,
+                                                   longitude=location.longitude)
             line_bot_api.reply_message(event.reply_token, location_message)
         except:
             text_message = TextSendMessage(text='找不到相關地點')
