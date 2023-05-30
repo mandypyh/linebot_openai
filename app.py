@@ -87,11 +87,7 @@ def handle_message(event):
                             MessageTemplateAction(
                                 label='最新文章',
                                 text='最新文章',
-                            ),
-                            MessageTemplateAction(
-                                label='ChatGPT',
-                                text='ChatGPT',
-                            ),
+                            )
                         ]
                     )
                 ) 
