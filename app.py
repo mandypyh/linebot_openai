@@ -85,6 +85,10 @@ def handle_message(event):
                                 text='推薦文章',
                             ),
                             MessageTemplateAction(
+                                label='最新文章',
+                                text='最新文章',
+                            ),
+                            MessageTemplateAction(
                                 label='ChatGPT回覆',
                                 text='ChatGPT回覆',
                             ),
@@ -95,14 +99,14 @@ def handle_message(event):
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)
 
-    elif msg == "推薦文章":
+    elif msg == "最新文章":
         message = []
         message.append(
                 TemplateSendMessage(
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='推薦文章',
-                        text='抓取最新日本旅遊網站文章，掌握近期討論熱點！也可以搜尋特定關鍵字，及時給予經情緒分析後的推薦文章!',
+                        text='抓取最新日本旅遊網站文章，掌握近期討論熱點！搜尋特定關鍵字，及時給予經情緒分析後的推薦文章!',
                         actions=[
                             MessageTemplateAction(
                                 label='Dcard',
@@ -116,17 +120,13 @@ def handle_message(event):
                                 label='聯合新聞網',
                                 text='聯合新聞網',
                             ),
-                            MessageTemplateAction(
-                                label='搜尋關鍵字',
-                                text='搜尋關鍵字',
-                            ),
                         ]
                     )
                 ) 
             )
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)
-
+    
     elif msg == "Dcard":
         reply_msg = "1. 東京六天五夜自由行，Day6晴空塔\nhttps://www.dcard.tw/f/japan_travel/p/242373525 \n\n2. 東京六天五夜自由行，沒有重點的Day5\nhttps://www.dcard.tw/f/japan_travel/p/242373221 \n\n3. #資訊 羽田紅眼航班，夜間巴士這樣搭\nhttps://www.dcard.tw/f/japan_travel/p/242373230"
         print(reply_msg)
@@ -144,6 +144,11 @@ def handle_message(event):
 
     elif msg == "搜尋關鍵字":
         reply_msg = "還沒建立這個功能，先選別的~"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+
+    elif msg == "推薦文章":
+        reply_msg = "搜尋特定關鍵字，提供經情緒分析後的最新推薦文章!"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
