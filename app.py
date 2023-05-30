@@ -58,7 +58,7 @@ def remove_first_two_lines(text):
 def handle_message(event):
     msg = event.message.text
 
-    if msg.startswith('ai:'):
+    if msg.startswith('ai:'): 
         GPT_answer = GPT_response(msg)
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
