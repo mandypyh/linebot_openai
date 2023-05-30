@@ -8,7 +8,6 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-#======python的函數庫==========
 import tempfile, os
 import datetime
 import openai
@@ -127,6 +126,26 @@ def handle_message(event):
             )
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)
+
+    elif msg == "Dcard":
+        reply_msg = "還沒建立這個功能，先選別的~"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+        
+    elif msg == "樂吃購!日本":
+        reply_msg = "還沒建立這個功能，先選別的~"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+        
+    elif msg == "聯合新聞網":
+        reply_msg = "虎航又促銷！飛澳門799元、飛日多地1,299元，第二波優惠再加碼韓國、曼谷\nhttps://udn.com/news/story/7934/7181370 限定口味快追！ 2023大阪美食「grenier 超人氣烤布蕾千層酥」 梅田阪急百貨必吃散步甜點\nhttps://udn.com/news/story/9652/7161935 小樽B級美食！昭和27年至今的在地老店，皮薄肉多汁的炸半雞定食，還出了自家的汽水\nhttps://udn.com/news/story/9650/7078064"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+
+    elif msg == "搜尋關鍵字":
+        reply_msg = "還沒建立這個功能，先選別的~"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "文字雲":
         message = []
