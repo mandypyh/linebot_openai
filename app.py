@@ -70,7 +70,7 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='功能說明',
-                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。我們的功能有:',
+                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字；如果需要ChatGPT回覆，請在訊息前面加"ai:"。我們的功能有:',
                         actions=[
                             MessageTemplateAction(
                                 label='文字雲',
