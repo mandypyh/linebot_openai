@@ -128,17 +128,17 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "Dcard":
-        reply_msg = "還沒建立這個功能，先選別的~"
+        reply_msg = "1. 東京六天五夜自由行，Day6晴空塔\nhttps://www.dcard.tw/f/japan_travel/p/242373525 \n2. 東京六天五夜自由行，沒有重點的Day5\nhttps://www.dcard.tw/f/japan_travel/p/242373221 \n3. #資訊 羽田紅眼航班，夜間巴士這樣搭\nhttps://www.dcard.tw/f/japan_travel/p/242373230"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
         
     elif msg == "樂吃購!日本":
-        reply_msg = "還沒建立這個功能，先選別的~"
+        reply_msg = "1. 繪本般的田園風景！長野縣秘境小鎮「安曇野」2天1夜自由行景點推薦\nhttps://tokyo.letsgojp.com/archives/469084/ \n2. 東京出發2.5小時！長野縣秘境「安曇野」，一探北阿爾卑斯山鄉村小鎮的慢活田園美景\nhttps://tokyo.letsgojp.com/archives/394163/ \n3. 【2023四國自由行】超完整攻略！瀨戶內小島、溫泉秘境玩透透，10日、7日、5日行程總覽！\nhttps://shikoku.letsgojp.com/archives/347957/"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
         
     elif msg == "聯合新聞網":
-        reply_msg = "虎航又促銷！飛澳門799元、飛日多地1,299元，第二波優惠再加碼韓國、曼谷\nhttps://udn.com/news/story/7934/7181370 \n限定口味快追！ 2023大阪美食「grenier 超人氣烤布蕾千層酥」 梅田阪急百貨必吃散步甜點\nhttps://udn.com/news/story/9652/7161935 \n小樽B級美食！昭和27年至今的在地老店，皮薄肉多汁的炸半雞定食，還出了自家的汽水\nhttps://udn.com/news/story/9650/7078064"
+        reply_msg = "1. 虎航又促銷！飛澳門799元、飛日多地1,299元，第二波優惠再加碼韓國、曼谷\nhttps://udn.com/news/story/7934/7181370 \n2. 限定口味快追！ 2023大阪美食「grenier 超人氣烤布蕾千層酥」 梅田阪急百貨必吃散步甜點\nhttps://udn.com/news/story/9652/7161935 \n3. 小樽B級美食！昭和27年至今的在地老店，皮薄肉多汁的炸半雞定食，還出了自家的汽水\nhttps://udn.com/news/story/9650/7078064"
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
