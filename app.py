@@ -63,6 +63,20 @@ def handle_message(event):
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
     
+    if msg.startswith('map:'):
+        from geopy.geocoders import Nominatim
+        location=msg[4:]
+        try:
+            geolocator = Nominatim(user_agent="my_app")
+            location = geolocator.geocode(location)
+            location_message = LocationSendMessage(title=location,
+                                                  latitude=location.latitude,
+                                                  longitude=location.longitude)
+            line_bot_api.reply_message(event.reply_token, location_message)
+        except:
+            text_message = TextSendMessage(text='找不到相關地點')
+            line_bot_api.reply_message(event.reply_token, text_message)
+
     elif msg == "功能說明":
         message = []
         message.append(
