@@ -112,11 +112,9 @@ def handle_message(event):
                         actions=[
                             MessageTemplateAction(
                                 label='標題結果',
-                                text='標題結果',
                             ),
                             MessageTemplateAction(
                                 label='內文結果',
-                                text='內文結果',
                             ),
                         ]
                     )
