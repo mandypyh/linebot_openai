@@ -58,10 +58,34 @@ def remove_first_two_lines(text):
 def handle_message(event):
     msg = event.message.text
 
-    if msg.startswith('ai:'): 
-        GPT_answer = GPT_response(msg[3:])
+    if msg.startswith('@'): 
+        GPT_answer = GPT_response(msg[1:])
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
+
+    elif msg == "ChatGPT":
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='ChatGPT',
+                        text='如果需要ChatGPT提供日本旅遊相關資訊的回覆與建議，請在訊息前面加"@"。例如:',
+                        actions=[
+                            MessageTemplateAction(
+                                label='@東京有哪些景點',
+                                text='@東京有哪些景點',
+                            ),
+                            MessageTemplateAction(
+                                label='@大阪有哪些景點',
+                                text='@大阪有哪些景點',
+                            ),
+                        ]
+                    )
+                ) 
+            )
+        print("type of msg: {}".format(type(msg)))
+        line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "功能說明":
         message = []
@@ -70,7 +94,7 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='功能說明',
-                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字；如果需要ChatGPT回覆，請在訊息前面加"ai:"。我們的功能有:',
+                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字；如果需要ChatGPT回覆，請在訊息前面加"@"。我們的功能有:',
                         actions=[
                             MessageTemplateAction(
                                 label='文字雲',
@@ -145,7 +169,7 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='推薦文章',
-                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n請在想查詢的關鍵字前面加＂#"，例如:',
+                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n請在想查詢的關鍵字前面加＂#"。例如:',
                         actions=[
                             MessageTemplateAction(
                                 label='#東京',
