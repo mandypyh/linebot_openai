@@ -59,7 +59,7 @@ def handle_message(event):
     msg = event.message.text
 
     if msg.startswith('ai:'): 
-        GPT_answer = GPT_response(msg)
+        GPT_answer = GPT_response(msg[3:])
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
 
@@ -138,14 +138,32 @@ def handle_message(event):
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
-    elif msg == "搜尋關鍵字":
-        reply_msg = "還沒建立這個功能，先選別的~"
-        print(reply_msg)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
-
     elif msg == "推薦文章":
-        reply_msg = "搜尋特定關鍵字，提供經情緒分析後的最新推薦文章! \n這個功能還沒建立，先點別的~"
-        print(reply_msg)
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='推薦文章',
+                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n如果你想查詢特定關鍵字結果，請在關鍵字前面加＂#＂，例如:',
+                        actions=[
+                            MessageTemplateAction(
+                                label='#東京',
+                                text='#東京',
+                            ),
+                            MessageTemplateAction(
+                                label='#大阪',
+                                text='#大阪',
+                            ),
+                        ]
+                    )
+                ) 
+            )
+        print("type of msg: {}".format(type(msg)))
+        line_bot_api.reply_message(event.reply_token, message)
+
+    if msg.startswith('#'): 
+        print("這個功能還沒建立!")
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "文字雲":
