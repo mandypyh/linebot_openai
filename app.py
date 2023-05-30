@@ -58,31 +58,7 @@ def remove_first_two_lines(text):
 def handle_message(event):
     msg = event.message.text
 
-    if msg == "ChatGPT":
-        message = []
-        message.append(
-                TemplateSendMessage(
-                    alt_text='Buttons template',
-                    template=ButtonsTemplate(
-                        title='ChatGPT',
-                        text='本官方帳號無一對一聊天功能，皆會回覆一樣的文字。 \n如果你需要ChatGPT的回覆與建議，請在訊息前面加＂ai:＂，例如:',
-                        actions=[
-                            MessageTemplateAction(
-                                label='ai:東京的景點有哪些?',
-                                text='ai:東京的景點有哪些?',
-                            ),
-                            MessageTemplateAction(
-                                label='ai:大阪的景點有哪些?',
-                                text='ai:大阪的景點有哪些?',
-                            ),
-                        ]
-                    )
-                ) 
-            )
-        print("type of msg: {}".format(type(msg)))
-        line_bot_api.reply_message(event.reply_token, message)
-    
-    elif msg.startswith('ai:'): 
+    if msg.startswith('ai:'): 
         GPT_answer = GPT_response(msg[3:])
         print(remove_first_two_lines(GPT_answer))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
@@ -169,15 +145,15 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='推薦文章',
-                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n如果你想查詢特定關鍵字結果，請在關鍵字前面加＂key:＂，例如:',
+                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n如果你想查詢特定關鍵字結果，請在關鍵字前面加＂#"',
                         actions=[
                             MessageTemplateAction(
-                                label='key:東京',
-                                text='key:東京',
+                                label='#東京',
+                                text='#東京',
                             ),
                             MessageTemplateAction(
-                                label='key:大阪',
-                                text='key:大阪',
+                                label='#大阪',
+                                text='#大阪',
                             ),
                         ]
                     )
@@ -186,8 +162,9 @@ def handle_message(event):
         print("type of msg: {}".format(type(msg)))
         line_bot_api.reply_message(event.reply_token, message)
 
-    if msg.startswith('key:'): 
-        print("這個功能還沒建立!")
+    if msg.startswith('#'): 
+        reply_msg = "這個功能還沒建立!"
+        print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "文字雲":
