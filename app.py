@@ -145,7 +145,7 @@ def handle_message(event):
                     alt_text='Buttons template',
                     template=ButtonsTemplate(
                         title='推薦文章',
-                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n如果你想查詢特定關鍵字結果，請在關鍵字前面加＂#"',
+                        text='搜尋特定關鍵字，提供情緒分析後的最新推薦文章! \n請在想查詢的關鍵字前面加＂#"，例如:',
                         actions=[
                             MessageTemplateAction(
                                 label='#東京',
