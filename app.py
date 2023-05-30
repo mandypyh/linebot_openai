@@ -97,9 +97,36 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "推薦文章":
-        reply_msg = "這個功能還沒建立"
-        print(reply_msg)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
+        message = []
+        message.append(
+                TemplateSendMessage(
+                    alt_text='Buttons template',
+                    template=ButtonsTemplate(
+                        title='推薦文章',
+                        text='抓取最新日本旅遊網站文章，掌握近期討論熱點！也可以搜尋特定關鍵字，及時給予經情緒分析後的推薦文章!',
+                        actions=[
+                            MessageTemplateAction(
+                                label='Dcard',
+                                text='Dcard',
+                            ),
+                            MessageTemplateAction(
+                                label='樂吃購!日本',
+                                text='樂吃購!日本',
+                            ),
+                            MessageTemplateAction(
+                                label='聯合新聞網',
+                                text='聯合新聞網',
+                            ),
+                            MessageTemplateAction(
+                                label='搜尋關鍵字',
+                                text='搜尋關鍵字',
+                            ),
+                        ]
+                    )
+                ) 
+            )
+        print("type of msg: {}".format(type(msg)))
+        line_bot_api.reply_message(event.reply_token, message)
 
     elif msg == "文字雲":
         message = []
