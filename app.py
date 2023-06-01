@@ -81,16 +81,15 @@ def recommend_article(keyword):
     result = "好評文章:\n"
     pos_top_keys = heapq.nlargest(3, positive_dict, key=positive_dict.get)
     for j in pos_top_keys:
-        result += j
-        result += "\n"
         result += whole_text[j]["link"]
+        result += "\n"
 
     result += "\n\n負評文章:\n"
     neg_top_keys = heapq.nlargest(3, negative_dict, key=negative_dict.get)
     for j in neg_top_keys:
-        result += j
-        result += "\n"
         result += whole_text[j]["link"]
+        result += "\n"
+
     return result
 
 
