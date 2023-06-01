@@ -53,6 +53,47 @@ def remove_first_two_lines(text):
     return "\n".join(lines)
 
 
+import json
+import heapq
+
+
+def recommend_article(keyword):
+    with open("sentiment_analysis.json", "r", encoding="utf-8") as f:
+        whole_text = json.load(f)
+
+    filtered_title = []
+    positive_dict = {}
+    negative_dict = {}
+
+    for i in whole_text:
+        if keyword in i:
+            filtered_title.append(i)
+        if keyword in whole_text[i]["content"]:
+            filtered_title.append(i)
+
+    for filtertitle in filtered_title:
+        sentiment = whole_text[filtertitle]["sentiment"]
+        if sentiment == "Positive":
+            positive_dict[filtertitle] = whole_text[filtertitle]["score"]
+        elif sentiment == "Negative":
+            negative_dict[filtertitle] = whole_text[filtertitle]["score"]
+
+    result = "Positive:\n"
+    pos_top_keys = heapq.nlargest(3, positive_dict, key=positive_dict.get)
+    for j in pos_top_keys:
+        result += j
+        result += "\n"
+        result += whole_text[j]["link"]
+
+    result += "\n\nNegtive:\n"
+    neg_top_keys = heapq.nlargest(3, negative_dict, key=negative_dict.get)
+    for j in neg_top_keys:
+        result += j
+        result += "\n"
+        result += whole_text[j]["link"]
+    return result
+
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -189,7 +230,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
 
     if msg.startswith("#"):
-        reply_msg = "這個功能還沒建立! 先點別的~"
+        reply_msg = recommend_article(msg[1:])
         print(reply_msg)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
