@@ -1,13 +1,13 @@
 from flask import Flask, request, abort
-
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
-
 import tempfile, os
 import datetime
 import openai
 import time
+import json
+import heapq
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), "static", "tmp")
@@ -51,10 +51,6 @@ def remove_first_two_lines(text):
     if len(lines) >= 2:
         lines = lines[2:]
     return "\n".join(lines)
-
-
-import json
-import heapq
 
 
 def recommend_article(keyword):
@@ -291,8 +287,6 @@ def handle_message(event):
 def handle_message(event):
     print(event.postback.data)
 
-
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
