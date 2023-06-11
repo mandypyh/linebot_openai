@@ -91,11 +91,13 @@ def handle_message(event):
     msg = event.message.text
 
     if msg.startswith("@"):
-        GPT_answer = GPT_response(msg[1:])
-        print(remove_first_two_lines(GPT_answer))
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer))
-        )
+        # GPT_answer = GPT_response(msg[1:])
+        # print(remove_first_two_lines(GPT_answer))
+        # line_bot_api.reply_message(event.reply_token, TextSendMessage(remove_first_two_lines(GPT_answer)))
+
+        reply_msg = "因為ChatGPT API用量已用光，目前暫停此服務!"
+        print(reply_msg)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply_msg))
 
     elif msg == "ChatGPT":
         message = []
